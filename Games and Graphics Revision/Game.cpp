@@ -12,6 +12,8 @@ Game::Game()
 	mPaddleDir = 0;
 	mBallPos.x = mWindowX / 2;
 	mBallPos.y = mWindowY / 2;
+	mBallVel.x = 200.0f;
+	mBallVel.y = 235.0f;
 
 	mPaddlePos.x = 50; //Roughly on left side of the screen
 	mPaddlePos.y = mWindowY / 2;
@@ -111,10 +113,53 @@ void Game::Update()
 			{
 				mPaddlePos.y = 768.0f - mPaddleH;
 			}
-
-			//This probably isn't a very good way of doing collision, but without the implementation of AABB currently this is the next best thing
+			//This isn't a very good way of doing collision, but without the implementation of AABB this is the next best thing
 		}
 
+		//Update Ball Velocity
+		//Top Wall
+		if (mBallPos.y <= thickness && mBallVel.y < 0.0f) //If ball bounces off top wall and is moving towards the top wall
+		{
+			mBallVel.y *= -1;
+		}
+
+		//Bottom Wall
+		if (mBallPos.y >= mWindowY - thickness && mBallVel.y > 0.0f) //If ball bounces off bottom wall and is moving towards the bottom wall
+		{
+			mBallVel.y *= -1;
+		}
+
+		//Right Wall
+		if (mBallPos.x >= mWindowX - thickness && mBallVel.x > 0.0f) //If ball bounces off bottom wall and is moving towards the bottom wall
+		{
+			mBallVel.x *= -1;
+		}
+
+		//Paddle
+		int diff = (mPaddlePos.y - mBallPos.y);
+		diff = (diff > 0.0f) ? diff : -diff;
+		/*if (diff <= mPaddleH / 2.0f && mBallPos.x <= 30.0f && mBallPos.x >= 20.0f && mBallVel.x < 0.0f)
+		{
+			mBallVel.x *= -1.0f;
+		}*/
+
+		if (diff <= mPaddleH / 2.0f && mBallPos.x <= mPaddlePos.x + mPaddleW && mBallPos.x >= 20.0f && mBallVel.x < 0.0f)
+		{
+			mBallVel.x *= -1.0f;
+		}
+
+		//Update Ball Position using Velocity and Delta Time;
+		mBallPos.x += mBallVel.x * deltaTime;
+		mBallPos.y += mBallVel.y * deltaTime;
+
+		//Ball Reset
+		if (mBallPos.x <= 0.0f)
+		{
+			mBallPos.x = mWindowX / 2;
+			mBallPos.y = mWindowY / 2;
+			mBallVel.x = 200.0f;
+			mBallVel.y = 235.0f;
+		}
 }
 
 void Game::GenerateOutput()
@@ -151,6 +196,7 @@ void Game::GenerateOutput()
 	SDL_RenderFillRect(mRenderer, &wall3);
 	SDL_RenderFillRect(mRenderer, &ball);
 	SDL_RenderFillRect(mRenderer, &paddle);
+
 	//Swap front and back buffers
 	SDL_RenderPresent(mRenderer);
 

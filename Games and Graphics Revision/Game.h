@@ -20,7 +20,7 @@ private:
 	SDL_Renderer* mRenderer;
 	bool mIsRunning;
 
-	Vector2D mPaddlePos, mBallPos;
+	Vector2D mPaddlePos, mBallPos, mBallVel;
 
 	const int thickness = 15;
 	const int mWindowX = 1024;
