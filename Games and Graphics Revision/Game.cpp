@@ -136,16 +136,11 @@ void Game::Update()
 		}
 
 		//Paddle
-		int diff = (mPaddlePos.y - mBallPos.y);
+		int diff = (mPaddlePos.y - mBallPos.y); //Something is very wrong here, off-set collision to top of paddle
 		diff = (diff > 0.0f) ? diff : -diff;
-		/*if (diff <= mPaddleH / 2.0f && mBallPos.x <= 30.0f && mBallPos.x >= 20.0f && mBallVel.x < 0.0f)
+		if (diff <= (mPaddleH + 150.0f) / 2.0f  && mBallPos.x <= mPaddlePos.x + mPaddleW && mBallPos.x >= 20.0f && mBallVel.x < 0.0f)
 		{
-			mBallVel.x *= -1.0f;
-		}*/
-
-		if (diff <= mPaddleH / 2.0f && mBallPos.x <= mPaddlePos.x + mPaddleW && mBallPos.x >= 20.0f && mBallVel.x < 0.0f)
-		{
-			mBallVel.x *= -1.0f;
+			mBallVel.x *= -1.1f;
 		}
 
 		//Update Ball Position using Velocity and Delta Time;

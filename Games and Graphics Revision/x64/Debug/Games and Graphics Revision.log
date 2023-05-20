@@ -4,6 +4,6 @@ D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Game
 D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(19,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(110,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
 D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(139,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(158,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(159,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(153,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\Games and Graphics Revision\Game.cpp(154,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Games and Graphics Revision.vcxproj -> D:\Users\Work\Documents\Dev\GitHub Repositories\Games and Graphics Revision\x64\Debug\Games and Graphics Revision.exe
